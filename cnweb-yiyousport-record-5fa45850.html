@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>易游体育 · 运动生活专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+
+        /* ——— 深色头图 ——— */
+        .hero {
+            background: linear-gradient(115deg, #0b1a2e 0%, #192f44 70%, #1f3f57 100%);
+            min-height: 72vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem 5rem;
+            color: #eef3f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%; left: -10%;
+            width: 140%; height: 160%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 215, 100, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            font-weight: 600;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero h1 span {
+            color: #f5c542;
+            font-weight: 500;
+        }
+
+        .hero .sub {
+            margin-top: 1.2rem;
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #cbd8e6;
+            max-width: 640px;
+            z-index: 1;
+        }
+
+        .hero .badge {
+            margin-top: 2.2rem;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            padding: 0.6rem 2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 215, 100, 0.25);
+            color: #dce6f0;
+            z-index: 1;
+        }
+
+        /* ——— 浅色正文区 ——— */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem 3rem;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.8rem 2.8rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 6px 28px rgba(0, 20, 40, 0.04);
+            border: 1px solid #eef2f7;
+            transition: box-shadow 0.2s;
+        }
+
+        .section-card:hover {
+            box-shadow: 0 10px 36px rgba(0, 20, 40, 0.08);
+        }
+
+        .section-card h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.4rem;
+            color: #0b1e2e;
+            border-left: 5px solid #f5c542;
+            padding-left: 1.2rem;
+        }
+
+        .section-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 1.6rem 0 0.6rem;
+            color: #1f3f57;
+        }
+
+        .section-card p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #2c3f55;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #c88a2b;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(200, 138, 43, 0.4);
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .highlight-link:hover {
+            color: #a46d1e;
+            border-bottom-color: #a46d1e;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #f8fafd;
+            padding: 1.2rem 1.6rem;
+            border-radius: 16px;
+            border: 1px solid #e1e9f2;
+        }
+
+        .feature-item strong {
+            display: block;
+            color: #0b1e2e;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #4a5f75;
+        }
+
+        .quote-block {
+            background: #f0f4fa;
+            padding: 1.8rem 2rem;
+            border-radius: 18px;
+            margin: 2rem 0 0;
+            font-style: italic;
+            border-left: 4px solid #f5c542;
+        }
+
+        /* ——— 页尾 ——— */
+        .page-footer {
+            background: #0f1f31;
+            color: #a6bdd6;
+            text-align: center;
+            padding: 3.2rem 2rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .page-footer a {
+            color: #f5c542;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(245, 197, 66, 0.35);
+        }
+
+        .page-footer a:hover {
+            color: #ffd966;
+            border-bottom-style: solid;
+        }
+
+        .footer-tag {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: #687e9a;
+        }
+
+        /* ——— 响应式 ——— */
+        @media (max-width: 640px) {
+            .hero {
+                min-height: 60vh;
+                padding: 3rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 2.5rem 1.2rem;
+            }
+            .section-card {
+                padding: 2rem 1.5rem;
+            }
+            .section-card h2 {
+                font-size: 1.5rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .quote-block {
+                padding: 1.4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== 深色头图 ====== -->
+    <section class="hero">
+        <h1>易游<span>体育</span></h1>
+        <p class="sub">从热爱到专业 · 运动生活方式的深度观察</p>
+        <div class="badge">专题 · 运动场景 &amp; 信息视野</div>
+    </section>
+
+    <!-- ====== 浅色正文区 ====== -->
+    <main class="content">
+
+        <!-- 1. 背景说明 -->
+        <div class="section-card">
+            <h2>在流动的节奏中重新认识运动</h2>
+            <p>运动不再仅仅是竞技场上的对抗，它正在渗透进日常的每一次呼吸、每一次出行。无论是城市绿道上的晨跑者，还是周末结伴的登山队伍，人们对身体和自然的感知变得愈发敏锐。在这样的背景下，<a href="https://cnweb-yiyousport.com" class="highlight-link">易游体育</a> 聚合了来自不同运动场景的资讯与思考，尝试为热爱活动的人们提供一份有体系的参考。不追求速成，不标榜奇迹，而是用扎实的内容陪伴每一次出发。</p>
+            <p>过去几年，运动与旅游、社交、自我管理之间的边界逐渐模糊。体育不再只是场馆里的计时与对抗，它同样可以是山脊上的徒步、河岸边的骑行，或者一次精心规划的户外挑战。这种趋势背后，是越发多元的信息需求——人们需要的不仅是装备推荐，还有路线评估、季节选择、安全须知以及与自然相处的分寸感。</p>
+        </div>
+
+        <!-- 2. 三段自然介绍：信息 + 场景 + 特点 -->
+        <div class="section-card">
+            <h2>不止于运动 · 三个维度的延伸</h2>
+
+            <h3>🧭 场景与准备</h3>
+            <p>不同的运动环境对应不同的身体策略与装备逻辑。从高原徒步到海岸越野，从城市夜跑到林间露营，每一类场景都值得被细致拆解。<a href="https://cnweb-yiyousport.com" class="highlight-link">易游体育</a> 在内容中关注路线难度分级、气候应对、补给规划以及应急方案，帮助参与者在出发前建立清晰的心理和物质准备。信息的完整度往往决定了体验的深度。</p>
+
+            <h3>📊 体能与恢复</h3>
+            <p>运动能力的提升依赖科学的训练节奏和充分的恢复周期。无论你是刚开始养成运动习惯，还是已经有一定基础，了解心率区间、力量耐力配比以及疲劳管理都会让训练事半功倍。相关主题中常常涉及周期化训练思路、营养补充时机以及睡眠对运动表现的影响——这些细节共同构成了持续进步的基础。</p>
+
+            <h3>🌿 自然与可持续</h3>
+            <p>户外运动的魅力在于与真实环境的互动，但这也意味着参与者需要承担对自然的责任。无痕山林、可降解装备的选择、对野生动物的尊重，都是现代运动文化中不可回避的议题。<a href="https://cnweb-yiyousport.com" class="highlight-link">易游体育</a> 倡导在享受自然馈赠的同时，以克制的态度维护生态平衡。每一次负责任的探索，都在为后来的体验者留下更好的空间。</p>
+
+            <!-- 特点卡片（轻量化展示） -->
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong>信息密度</strong>
+                    <span>拒绝空洞清单，每篇内容聚焦可执行的细节</span>
+                </div>
+                <div class="feature-item">
+                    <strong>实用视角</strong>
+                    <span>从新手到进阶，不同阶段的困惑都能找到回应</span>
+                </div>
+                <div class="feature-item">
+                    <strong>真实案例</strong>
+                    <span>基于实际路线与运动记录，不虚构体验</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. FAQ 摘要式段落（融入提示） -->
+        <div class="section-card">
+            <h2>常见关切 · 一点摘要</h2>
+            <p><strong>运动前需要做哪些基础评估？</strong> 建议从个人病史、既往损伤史以及当前心肺耐力出发，必要时咨询运动医学专业人员。对户外项目而言，还需评估天气预报、地形难度以及通信覆盖情况。</p>
+            <p><strong>如何平衡运动频率与恢复？</strong> 一般成年人每周 150 分钟中等强度有氧活动是基础参考，但具体安排应结合工作压力、睡眠质量以及饮食摄入动态调整。过度训练不仅降低表现，还可能增加受伤风险。</p>
+            <div class="quote-block">
+                “运动不是一场冲刺，而是一次没有终点的旅程。重要的不是速度，而是持续向前的意愿和对自己身体的诚实。”
+            </div>
+            <p style="margin-top:1.2rem;">更细致的讨论与案例，可以在 <a href="https://cnweb-yiyousport.com" class="highlight-link">易游体育</a> 的内容版块中持续阅读。我们不提供速成指南，只期望成为你探索运动世界时一份可靠的背景音。</p>
+        </div>
+
+    </main>
+
+    <!-- ====== 页尾访问提示 ====== -->
+    <footer class="page-footer">
+        <p>以运动为线索，连接场景、知识与日常。<br>
+        若你想了解更多关于路线、训练与可持续运动的内容，欢迎浏览 <a href="https://cnweb-yiyousport.com">易游体育</a> 的专题页面。</p>
+        <div class="footer-tag">运动生活 · 真实记录</div>
+    </footer>
+
+</body>
+</html>
